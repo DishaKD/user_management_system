@@ -1,5 +1,8 @@
 import React from "react";
+import UserForm from "./userForm";
 
-const Users = () => {};
+const Users = () => {
+  return <UserForm />;
+};
 
 export default Users;

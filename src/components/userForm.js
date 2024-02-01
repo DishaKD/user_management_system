@@ -1,4 +1,4 @@
-import { Grid, Input, Typography } from "@mui/material";
+import { Button, Grid, Input, Typography } from "@mui/material";
 import React from "react";
 
 const UserForm = (props) => {
@@ -18,7 +18,7 @@ const UserForm = (props) => {
         </Typography>
       </Grid>
 
-      <Grid>
+      <Grid item xs={12} sm={6} sx={{ display: "flex" }}>
         <Typography
           component={"label"}
           htmlFor="id"
@@ -41,6 +41,45 @@ const UserForm = (props) => {
           onChange={(e) => {}}
         />
       </Grid>
+      <Grid item xs={12} sm={6} sx={{ display: "flex" }}>
+        <Typography
+          component={"label"}
+          htmlFor="name"
+          sx={{
+            color: "#000000",
+            marginRight: "20px",
+            fontSize: "16px",
+            width: "100px",
+            display: "block",
+          }}
+        >
+          Name
+        </Typography>
+        <Input
+          type="text"
+          id="name"
+          name="name"
+          sx={{ width: "400px" }}
+          value={""}
+          onChange={(e) => {}}
+        />
+      </Grid>
+      <Button
+        sx={{
+          margin: "auto",
+          marginBottom: "20px",
+          backgroundColor: "#00c6e6",
+          color: "#000000",
+          marginLeft: "15px",
+          marginRight: "20px",
+          "&:hover": {
+            opacity: "0.7",
+            backgroundColor: "#00c6e6",
+          },
+        }}
+      >
+        Add
+      </Button>
     </Grid>
   );
 };
