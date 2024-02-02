@@ -1,7 +1,10 @@
 import { Button, Grid, Input, Typography } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 
 const UserForm = (props) => {
+  const [id, setId] = useState();
+  const [name, setName] = useState();
+
   return (
     <Grid
       container
