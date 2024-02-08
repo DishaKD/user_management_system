@@ -54,6 +54,17 @@ const Users = () => {
       .then((response) => {
         getUsers();
         setSubmitted(false);
+        isEdit(false);
+      })
+      .catch((error) => {
+        console.error("Axios Error:", error);
+      });
+  };
+
+  const deleteUser = (data) => {
+    Axios.post("http://localhost:3001/api/deleteuser", data)
+      .then(() => {
+        getUsers();
       })
       .catch((error) => {
         console.error("Axios Error:", error);
@@ -77,6 +88,9 @@ const Users = () => {
           setSelectedUser(data);
           setIsEdit(true);
         }}
+        deleteUser={(data) =>
+          window.confirm("Are you sure ?") && deleteUser(data)
+        }
       />
     </Box>
   );
