@@ -8,7 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Button } from "@mui/material";
 
-const UsersTable = ({ rows }) => {
+const UsersTable = ({ rows, selectedUser }) => {
   return (
     <TableContainer component={Paper}>
       <Table>
@@ -20,28 +20,42 @@ const UsersTable = ({ rows }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {rows.length > 0 ? (
+            rows.map((row) => (
+              <TableRow
+                key={row.id}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  {row.id}
+                </TableCell>
+                <TableCell component="th" scope="row">
+                  {row.name}
+                </TableCell>
+                <TableCell>
+                  <Button
+                    variant="contained"
+                    color="success"
+                    onClick={() => selectedUser({ id: row.id, name: row.name })}
+                  >
+                    Update
+                  </Button>
+                  &nbsp; &nbsp;
+                  <Button variant="outlined" color="error" onClick={() => {}}>
+                    Delete
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))
+          ) : (
             <TableRow
-              key={row.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.id}
-              </TableCell>
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell>
-                <Button variant="contained" color="success" onClick={() => {}}>
-                  Update
-                </Button>
-                &nbsp; &nbsp;
-                <Button variant="outlined" color="error" onClick={() => {}}>
-                  Delete
-                </Button>
+                No Data
               </TableCell>
             </TableRow>
-          ))}
+          )}
         </TableBody>
       </Table>
     </TableContainer>
