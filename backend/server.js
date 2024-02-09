@@ -5,7 +5,6 @@ const port = 3001;
 const host = "localhost";
 const mongoose = require("mongoose");
 const router = require("./router");
-const path = require("path");
 
 app.use(cors());
 app.use(express.json());
@@ -21,13 +20,6 @@ const connect = async () => {
     console.log("MongoDB Error : ", error);
   }
 };
-
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "client", "build")));
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-  });
-}
 
 connect();
 
