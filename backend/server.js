@@ -5,6 +5,7 @@ const port = 3001;
 const host = "localhost";
 const mongoose = require("mongoose");
 const router = require("./router");
+const path = require("path");
 
 app.use(cors());
 app.use(express.json());
